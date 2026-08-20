@@ -3,13 +3,12 @@
 <p>Sign Up, View Shows you watched, leave a review, like other's reviews!</p>
 
 ## User Stories
-* As a User, I want to be able to select a show from a collection of shows to log.
-* As a user, I want to sign up for an account and have my saved shows when i log in everytime.
-* As a user, I need a page to view all my reviews.
-* As a user, I want to be able to add a review for each show i reviewed.
-* As a user, I want to be able to edit and delete my reviews.
-* As a user, i want to be able to view random user's reviews on a discover page.
-* As a user, i want to be able to view other user's profile with all their reviews.
+* As a User, i want to have an account i can register and sign up
+* As a User, i want to be a able to add other users as friends
+* As a User, i want to be able to add friends to watchalongs 
+* AS a USer, i want to be able to search shows and create watchalongs with episodes selections
+* As a User, i want to be able to add shows to watchlist so i can view later
+
 
 ## Wireframes
 
@@ -18,40 +17,52 @@
 ### Home Page
 ![Home](./assets/Home.png)
 ### Your Profile
-![Profile](./assets/YourProfile.png)
-### Discover
-![Discover](./assets/Discover.png)
-### Show Profile
-![Show Page](./assets/ShowProfile.png)
-### Your Reviews
-![Your Reviews](./assets/YourReviews.png)
-### Others Profile
-![OthersProfile](./assets/OtherProfile.png)
+![Profile](./assets/Profile.png)
+
+
 ## Entity Relationship Diagram
 ![ERD](./assets/WatchLogERD.png)
 
 ## Routes Table
 | Method | Path | Purpose|
 |--------|------|--------|
-| **Auth Routes** |                
+| **Auth Routes** |
 | GET | `/auth/sign-up` | Register Page |
-| GET | `/auth/sign-in` | Login Page |
 | POST | `/auth/sign-up` | Create Account |
+| GET | `/auth/sign-in` | Login Page |
 | POST | `/auth/sign-in` | Login |
-| **Common Routes** |                
-| GET | `/` | Get Landing Page |
-| GET | `/home` | Get Home Page |
-| GET | `/profile` | Get User's Own Profile |
-| **User Routes** |                
+| POST | `/auth/sign-out` | Sign Out |
+| **Common Pages**|
+| GET | `/` | Landing |
+| GET | `/home` | Home Page |
+|**Users**|
 | GET | `/users` | Get all Users |
 | GET | `/users/:id` | Get specific User |
+| GET | `/users/:id/edit` | Get Profile Edit |
 | PUT | `/users/:id` | Update User |
-| **Review Routes** |                
-| GET | `/reviews` | Get all Reviews |
-| GET | `/reviews/:id` | Get specific Review |
-| POST | `/reviews` | Create Review |
-| PUT | `/reviews/:id` | Update Review |
-| PATCH | `/reviews/:id` | Like/Dislike Review |
-| DELETE | `/reviews/:id` | Delete Review |
-
-
+|**Watchlist**|
+| GET | `/watchlist` | Get current user's watchlist |
+| POST | `/watchlist/:id` | Add show to watchlist |
+| DELETE | `/watchlist/:id` | Remove from watchlist |
+|**Friend**|
+| GET | `/friends` | Get all friends |
+| DELETE | `/friends/:id` | Remove friend |
+| GET | `/friend-requests` | Get all friend requests |
+| POST | `/friend-requests` | Create Request |
+| PATCH | `/friend-requests/:id` | Accept/decline request |
+| DELETE | `/friend-requests/:id` | Delete request |
+|**Watch Along** |
+| GET | `/watch-alongs` | Get all watchalongs |
+| GET | `/watch-alongs/:id` | Get specific watchalong |
+| GET | `/watch-alongs/new` | Create Page |
+| POST | `/watch-alongs` | Create WatchAlong |
+| GET | `/watch-alongs/:id/edit` | Edit WatchAlong page |
+| PUT | `/watch-alongs/:id` | Update WatchAlong |
+| PATCH | `/watch-alongs/:id` | Accept/decline invite |
+| DELETE | `/watch-alongs/:id` | Delete WatchAlong |
+|**Show**|
+| GET | `/shows` | Get Shows page |
+| GET | `/shows/:id` | Get specific show page |
+|**AJAX**|
+| GET | `/api/shows/search` | Search shows |
+| GET | `/api/shows/:id/episodes` | Get episodes of show |
